@@ -1,0 +1,16 @@
+<% if @target.errors %>
+	<ul>
+		<% @target.errors.full_messages.each do |m| %>
+			<li><%= m %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<%= form_for @target do |target_form| %>
+	<h3>Leave a compliment for <%= @target.name %>:</h3>
+	<%= target_form.fields_for :messages, @target.messages.build do |message_form| %>
+			<%# don't forget to get rid of this unsemantic html! %>
+			<%= message_form.text_area :body, placeholder: "Write your compliment!", size: "30x10" %><br>
+	<% end %>
+	<%= target_form.submit "Buzz!" %>
+<% end %>

@@ -1,0 +1,21 @@
+<% if @school.errors %>
+	<ul>
+		<% @school.errors.full_messages.each do |m| %>
+			<li><%= m %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<%= form_for @school do |school_form| %>
+	<h3>Leave a compliment at <%= @school.name %>!</h3>
+
+	<%= school_form.fields_for :targets, @target = @school.targets.build do |target_form| %>
+
+			<%= target_form.text_field :name, placeholder: "Who do you want to compliment?" %><br>
+
+			<%= target_form.fields_for :messages, @target.messages.build do |message_form| %>
+				<%= message_form.text_area :body, placeholder: "Write your compliment!", size: "30x10" %><br>
+			<% end %>
+	<% end %>
+	<%= school_form.submit "Buzz!" %>
+<% end %>

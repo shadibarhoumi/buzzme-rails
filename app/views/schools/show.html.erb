@@ -1,0 +1,11 @@
+<h1 id="school-name"><%= @school.name %></h1>
+
+<div id="form">
+	<%= render "message_form" %>
+</div>
+
+<div id="feed">
+	<% @school.messages.each do |m| %>
+		<%= render partial: "messages/single_message", locals: { target: m.target, message: m} %>
+	<% end %>
+</div>

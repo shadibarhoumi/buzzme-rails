@@ -1,0 +1,7 @@
+<% unless message.new_record? %>
+	<p>
+		Dear <b><%= link_to target.name, school_target_path(target.school, target) %></b>, <br>
+		<%= message.body %><br>
+		<%= link_to 'Show this Message', target_message_path(target, message) %>
+	</p>
+<% end %>

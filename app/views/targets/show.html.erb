@@ -1,0 +1,7 @@
+<h1><%= link_to @target.school.name, @target.school %> > <%= @target.name %></h1>
+
+<%= render partial: "message_form" %>
+
+<% @target.messages.sort_by  do |m| %>
+	<%= render partial: "messages/single_message", locals: { target: @target, message: m} %>
+<% end %>

@@ -1,0 +1,7 @@
+<h1>
+	<b><%= link_to @message.target.school.name, school_path(@message.target.school) %></b> >
+	<b><%= link_to @message.target.name, school_target_path(@message.target.school, @message.target) %></b> >
+	<b><%= @message.body %></b>
+</h1>
+
+<p><%= @message.body %></p>
